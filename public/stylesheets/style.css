@@ -1,0 +1,122 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #ED6F5F;
+}
+
+a {
+  color: #00B7FF; 
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.buttons {
+  padding: 0;
+  margin: 0;
+}
+
+.gif-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gif {
+  display: block;
+  width: 90px;
+}
+
+.container-right{
+  width: 30vw;
+  position: absolute;
+  left: 70vw;
+  top: 10vh;
+}
+.container-left{
+  width: 30vw;
+  position: absolute;
+  top: 10vh;
+}
+.charmander{
+  position: relative;
+  left: 20%;
+}
+.squirtle{
+  position: relative;
+  left: 50%;
+}
+.bulbasaur{
+  position: relative;
+  left: 10%;
+}
+.pikachu{
+  position: relative;
+  left: 70%;
+}
+.mew{
+  position: relative;
+  left: 40%;
+}
+.lapras{
+  position: relative;
+  left: 20%;
+}
+.articuno{
+  position: relative;
+  left: 55%;
+}
+.zapdos{
+  position: relative;
+  left: 10%;
+}
+.charmeleon{
+  position: relative;
+  left: 20%;
+}
+.ivysaur{
+  position: relative;
+  left: 50%;
+}
+.wartortle{
+  position: relative;
+  left: 10%;
+}
+.charizard{
+  position: relative;
+  left: 70%;
+}
+.blastoise{
+  position: relative;
+  left: 40%;
+}
+.venasaur{
+  position: relative;
+  left: 20%;
+}
+.moltres{
+  position: relative;
+  left: 55%;
+}
+.mewtwo{
+  position: relative;
+  left: 10%;
+}
+
+.form-container{
+  text-align: center;
+  margin: 15vh auto;
+  width: 20vw;
+}
+
+.log-container{
+  text-align: center;
+  margin: 15vh auto;
+  width: 20vw;
+}
+
+
+
+/*# sourceMappingURL=style.css.map */
