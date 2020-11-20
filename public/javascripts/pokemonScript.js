@@ -1,5 +1,3 @@
-// const passport = require('passport');
-
 document.addEventListener('DOMContentLoaded', () => {
 
   const pokemonPath = (window.location.pathname).toLowerCase();
