@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
           pokeImg.setAttribute('src', `/images/${pokemon.name}.png`);
           pokeImg.setAttribute('alt', `${pokemon.name} image`);
           pokeImg.setAttribute('style', 'width: 100px;');
-          pokeImg.setAttribute('href', `/pokemon/${pokemon.name}`);
           pokeAnchor.append(pokeImg);
           pokedexdisplay.append(pokeAnchor);
         });
