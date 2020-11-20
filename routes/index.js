@@ -68,11 +68,6 @@ router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 
   Trainer.findOne({email: req.user.email})
     .then((result)=>{
-      // console.log(result);
-      // pokeArr = [];
-      // result.team.forEach((pokemon)=>{
-      //   pokeArr.push(pokemon);
-      // });
       res.render('team', result);
     })
     .catch((err)=>{
@@ -80,16 +75,25 @@ router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
     })
 });
 
-router.get('/pokedex', (req,res,next)=>{
+router.get('/pokedex', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   res.render('pokedex');
 });
 
-router.get('/pokemon/:name', (req,res,next)=>{
-  const name = req.params.name;
-
-
+router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   res.render('pokemon');
 });
+
+router.post('/addteam/:name', (req, res, next)=>{
+  const name = req.params.name;
+  const email = req.user.email;
+  Trainer.findOne({email})
+    .then((result)=>{
+      result.team.push(name); //SEGUIR DESDE AQUÍ!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    })
+    .catch((err)=>res.send(err));
+});
+
+
 
 module.exports = router;
   
