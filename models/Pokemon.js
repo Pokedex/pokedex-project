@@ -13,6 +13,6 @@ const pokemonSchema = new Schema({
   captured: {type: Boolean}
 });
 
-const Pokemon = mongoose.model('Pokemon', pokemonSchema)
+const Pokemon = mongoose.model('Pokemon', pokemonSchema);
 
-module.exports = Pokemon
+module.exports = Pokemon;

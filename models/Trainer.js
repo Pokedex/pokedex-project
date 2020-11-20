@@ -10,6 +10,6 @@ const trainerSchema = new Schema({
   captured: {type: Array}
 });
 
-const Trainer = mongoose.model('Trainer', trainerSchema)
+const Trainer = mongoose.model('Trainer', trainerSchema);
 
-module.exports = Trainer
+module.exports = Trainer;
