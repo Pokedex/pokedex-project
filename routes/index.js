@@ -58,9 +58,6 @@ router.get('/logout', (req,res,next)=>{
 });
 
 router.get('/userpage', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
-  
-
-
   res.render('userpage');
 });
 
@@ -86,11 +83,16 @@ router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 router.post('/addteam/:name', (req, res, next)=>{
   const name = req.params.name;
   const email = req.user.email;
-  Trainer.findOne({email})
-    .then((result)=>{
-      result.team.push(name); //SEGUIR DESDE AQUÍ!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const team = req.user.team;
+  const newTeam = [...team, name];
+  Trainer.updateOne({email}, {team: newTeam})
+    .then(()=>{
+      console.log(`Added ${name} to you team!`);
+      res.redirect('/team');
     })
-    .catch((err)=>res.send(err));
+    .catch((err)=>{
+      console.log(err);
+    });
 });
 
 

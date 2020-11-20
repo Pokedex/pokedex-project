@@ -17,7 +17,7 @@ const flash         = require('connect-flash');
 const Trainer       = require('./models/Trainer');
 
 mongoose
-  .connect(`mongodb+srv://Pokedex:${process.env.PASS}@cluster0.xeefh.mongodb.net/Pokédex?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(`mongodb+srv://Pokedex:${process.env.PASS}@cluster0.xeefh.mongodb.net/Pokédex?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true})
   .then(x => {
     console.log(chalk.greenBright.inverse.bold(`Connected to Mongo! Database name: "${x.connections[0].name}"`));
   })
@@ -56,7 +56,6 @@ app.use(flash());
 
 // Middleware de la Strategy
 passport.use(new LocalStrategy({passReqToCallback: true, usernameField: 'email', passwordField: `password`}, (req, email, password, next)=>{
-  console.log('holi');
   Trainer.findOne({email})
     .then((trainer)=>{
       if(!trainer) return next(null, false, {message: 'Something went wrong, try again.'});
