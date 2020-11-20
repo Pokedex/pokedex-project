@@ -1,0 +1,9 @@
+<h2>My team:</h2>
+
+<ul id="pokemon-display">
+  {{#each team}}
+     <a href="/pokemon/{{this}}"><li class="mypokemon">{{this}}</li></a>
+  {{/each}}
+</ul>
+
+<script src="/javascripts/pokemonScript.js"></script>

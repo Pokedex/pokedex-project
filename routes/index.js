@@ -52,28 +52,44 @@ router.post('/login', passport.authenticate('local', {
   passReqToCallback: true
 }));
 
-
-
-
 router.get('/logout', (req,res,next)=>{
   req.logOut();
   res.redirect('/');
 });
 
 router.get('/userpage', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
+  
+
+
   res.render('userpage');
 });
 
-// router.get('/team', (req,res,next)=>{
-//   res.render('team');
-// });
+router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 
-// router.get('/pokedex', (req,res,next)=>{
-//   res.render('pokedex');
-// });
+  Trainer.findOne({email: req.user.email})
+    .then((result)=>{
+      // console.log(result);
+      // pokeArr = [];
+      // result.team.forEach((pokemon)=>{
+      //   pokeArr.push(pokemon);
+      // });
+      res.render('team', result);
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+});
 
-// router.get('/pokemon/:name', (req,res,next)=>{
-//   res.render('pokemon');
-// });
+router.get('/pokedex', (req,res,next)=>{
+  res.render('pokedex');
+});
+
+router.get('/pokemon/:name', (req,res,next)=>{
+  const name = req.params.name;
+
+
+  res.render('pokemon');
+});
 
 module.exports = router;
+  
