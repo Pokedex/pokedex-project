@@ -2,9 +2,9 @@ const express  = require('express');
 const router   = express.Router();
 const bcrypt   = require('bcrypt');
 const passport = require('passport');
+const ensureLogin = require('connect-ensure-login');
 const Trainer  = require('../models/Trainer.js');
 const Pokemon  = require('../models/Pokemon.js');
-const ensureLogin = require('connect-ensure-login');
 
 
 /* GET home page */
@@ -52,6 +52,9 @@ router.post('/login', passport.authenticate('local', {
   passReqToCallback: true
 }));
 
+
+
+
 router.get('/logout', (req,res,next)=>{
   req.logOut();
   res.redirect('/');
@@ -61,16 +64,16 @@ router.get('/userpage', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   res.render('userpage');
 });
 
-router.get('/team', (req,res,next)=>{
-  res.render('team');
-});
+// router.get('/team', (req,res,next)=>{
+//   res.render('team');
+// });
 
-router.get('/pokedex', (req,res,next)=>{
-  res.render('pokedex');
-});
+// router.get('/pokedex', (req,res,next)=>{
+//   res.render('pokedex');
+// });
 
-router.get('/pokemon/:name', (req,res,next)=>{
-  res.render('pokemon');
-});
+// router.get('/pokemon/:name', (req,res,next)=>{
+//   res.render('pokemon');
+// });
 
 module.exports = router;
