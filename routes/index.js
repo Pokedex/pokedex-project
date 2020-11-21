@@ -73,7 +73,11 @@ router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 });
 
 router.get('/pokedex', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
-  res.render('pokedex');
+  const name = req.params.name;
+  const captured = req.user.captured;
+  const newCaptured = [...captured, name];
+  const newString = newCaptured.join('-');
+  res.render('pokedex', {string: newString});
 });
 
 router.get('/captured', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
@@ -93,19 +97,26 @@ router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 router.post('/addteam/:name', (req, res, next)=>{
   const name = req.params.name;
   const email = req.user.email;
-  const captured = req.user.captured;
   const team = req.user.team;
   const newTeam = [...team, name];
+  const captured = req.user.captured;
+  const capturedString = captured.join('-');
+  if(team.length===6){
+    res.render('pokedex', {errorMessage: 'You already have 6 pokemon in your team. Remove some of them before you add new ones.', string: capturedString});
+    return;
+  }
+  const newCaptured = [...captured, name];
+  const newString = newCaptured.join('-');
   if(team.includes(name)){
     console.log('This pokemon is already in your team!');
-    res.redirect('/pokedex');
+    res.render('/pokedex', {string: newString});
     return;
   }
   if(!captured.includes(name)){
     Trainer.updateOne({email}, {captured: newCaptured})
     .then(()=>{
       console.log(`You just captured ${name}!`);
-      res.redirect('/pokedex');
+      res.render('pokedex', {string: newString});
     })
     .catch((err)=>{
       console.log(err);
@@ -114,7 +125,7 @@ router.post('/addteam/:name', (req, res, next)=>{
   Trainer.updateOne({email}, {team: newTeam})
     .then(()=>{
       console.log(`Added ${name} to you team!`);
-      res.redirect('/team');
+      res.render('pokedex', {string: newString});
     })
     .catch((err)=>{
       console.log(err);
@@ -126,16 +137,17 @@ router.post('/capture/:name', (req, res, next)=>{
   const email = req.user.email;
   const captured = req.user.captured;
   const newCaptured = [...captured, name];
-  const string = newCaptured.join('');
+  const newString = newCaptured.join('-');
   if(captured.includes(name)){
     console.log('This pokemon is already captured!');
-    res.render('pokedex');
+    res.render('pokedex', {string: newString});
     return;
   }  
   Trainer.updateOne({email}, {captured: newCaptured})
     .then(()=>{
+      console.log(newString);
       console.log(`You just captured ${name}!`);
-      res.render('pokedex');
+      res.render('pokedex', {string: newString});
     })
     .catch((err)=>{
       console.log(err);
