@@ -1,20 +1,29 @@
-<div class="log-container">
+<div >
+   <img class="log-hbs" src="./images/log-image.png" alt="Log Image"> 
+  </div>
 
-    <h2>Nice to see you here!!</h2>
+<div class="log-container">
+    
 
     <form action="/login" method="POST">
 
-    <label for="email">Email: </label>
-    <input type="text" name="email" id="email">
+    <div class="textbox">
+      <label for="email"></label>
+      <input type="text" placeholder="Email" name="email" id="email">
+    </div>
 
     </br>
 
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password">
+    <div class="textbox">
+      <label for="password"></label>
+      <input type="password" placeholder="Password" name="password" id="password">
+    </div>
+
+    
 
     </br>
 
-    <button type="submit">Log In</button>
+    <button class="btn" type="submit">Log In</button>
 
   </form>
 </div>

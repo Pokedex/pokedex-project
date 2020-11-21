@@ -112,9 +112,49 @@ a {
 }
 
 .log-container{
+  display: flex;
   text-align: center;
   margin: 15vh auto;
   width: 20vw;
+}
+
+.log-hbs {
+  display: flex;
+  width: 45vw;
+  position: relative;
+  left: 550px;
+  top: 100px;
+}
+
+.textbox {
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  margin: 8px 0;
+  border-bottom: 2px solid #ffde00;
+}
+
+.textbox input {
+  border: none;
+  outline: none;
+  background: none;
+  color: #3B4CCA;
+  font-size: 18px;
+  width: 80%;
+  float: left;
+  margin: 0 10px
+}
+
+.btn {
+  width: 100%;
+  background: none;
+  border: 2px solid #3b4cca;
+  color: #3B4CCA;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
 }
 
 
