@@ -16,11 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
         <form action="/addteam/${result.data.name}" method="POST">
           <button type="submit">Add to my team</button>
         </form>
+
+        <form action="/capture/${result.data.name}" method="POST">
+          <button id="capture-button" type="submit">Capture</button>
+        </form>
+
+        <form action="/remove/${result.data.name}" method="POST">
+          <button type="submit">Remove from team</button>
+        </form>
         `;
       })
       .catch((err)=>{
         console.log(err);
       });
+
+
+      axios.get('')
+
   
 
   

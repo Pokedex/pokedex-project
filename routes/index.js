@@ -69,11 +69,21 @@ router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
     })
     .catch((err)=>{
       res.send(err);
-    })
+    });
 });
 
 router.get('/pokedex', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   res.render('pokedex');
+});
+
+router.get('/captured', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
+  Trainer.findOne({email: req.user.email})
+    .then((result)=>{
+      res.render('captured', result);
+    })
+    .catch((err)=>{
+      res.send(err);
+    });
 });
 
 router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
@@ -83,11 +93,63 @@ router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 router.post('/addteam/:name', (req, res, next)=>{
   const name = req.params.name;
   const email = req.user.email;
+  const captured = req.user.captured;
   const team = req.user.team;
   const newTeam = [...team, name];
+  if(team.includes(name)){
+    console.log('This pokemon is already in your team!');
+    res.redirect('/pokedex');
+    return;
+  }
+  if(!captured.includes(name)){
+    Trainer.updateOne({email}, {captured: newCaptured})
+    .then(()=>{
+      console.log(`You just captured ${name}!`);
+      res.redirect('/pokedex');
+    })
+    .catch((err)=>{
+      console.log(err);
+    });    
+  }
   Trainer.updateOne({email}, {team: newTeam})
     .then(()=>{
       console.log(`Added ${name} to you team!`);
+      res.redirect('/team');
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+});
+
+router.post('/capture/:name', (req, res, next)=>{
+  const name = req.params.name;
+  const email = req.user.email;
+  const captured = req.user.captured;
+  const newCaptured = [...captured, name];
+  const string = newCaptured.join('');
+  if(captured.includes(name)){
+    console.log('This pokemon is already captured!');
+    res.render('pokedex');
+    return;
+  }  
+  Trainer.updateOne({email}, {captured: newCaptured})
+    .then(()=>{
+      console.log(`You just captured ${name}!`);
+      res.render('pokedex');
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+});
+
+router.post('/remove/:name', (req, res, next)=>{
+  const name = req.params.name;
+  const email = req.user.email;
+  const team = req.user.team;
+  team.splice(team.indexOf(name), 1);
+  Trainer.updateOne({email}, {team: team})
+    .then(()=>{
+      console.log(`${name} just got out of your team!`);
       res.redirect('/team');
     })
     .catch((err)=>{
