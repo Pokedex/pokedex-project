@@ -2,11 +2,10 @@
 
 <div id="pokemon-display">
   {{#each captured}}
-     <a href="/pokemon/{{this}}">
-      <img style="width: 200px; display: inline-block;" src="/images/{{this}}.png" alt="{{this}}">
+     <a style="display: inline-block;" href="/pokemon/{{this}}">
+      <img style="width: 100px;" src="/images/{{this}}.png" alt="{{this}}">
       <p style="display: inline;">{{this}}</p>
      </a>
-     <br>
   {{/each}}
 </div>
 
