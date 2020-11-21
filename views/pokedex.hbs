@@ -1,9 +1,14 @@
 <h2>Pokedex:</h2>
 
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}
+
 <div id="pokedex-display">
 
 </div>
 
+<p id="data-transport" style="display: none;">{{string}}</p>
 
 
 <script src="/javascripts/pokedexScript.js"></script>
