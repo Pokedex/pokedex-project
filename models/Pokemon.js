@@ -7,10 +7,10 @@ const pokemonSchema = new Schema({
   weight: {type: Number},
   height: {type: Number},
   type: {type: String},
-  team: {type: Array},
   moves: {type: [String]},
   spotted: {type: Boolean},
-  captured: {type: Boolean}
+  captured: {type: Boolean, default: false},
+  trainer: {type: String}
 });
 
 const Pokemon = mongoose.model('Pokemon', pokemonSchema);

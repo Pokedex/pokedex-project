@@ -30,7 +30,7 @@ router.post('/signup', (req, res, next)=>{
       bcrypt.hash(password, 10)
       .then((hashedPass)=>{
         Trainer.create({name, age, email, password: hashedPass})
-        .then((result)=>res.redirect('/login'));
+        .then(()=>res.redirect('/login'));
       })
     } else {
       res.render('signup', {errorMessage: 'This trainer already exists, please try again.'})
@@ -74,10 +74,17 @@ router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 
 router.get('/pokedex', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   const name = req.params.name;
+  const email = req.user.email;
   const captured = req.user.captured;
   const newCaptured = [...captured, name];
   const newString = newCaptured.join('-');
-  res.render('pokedex', {string: newString});
+  Pokemon.find({trainer: email})
+    .then((result)=>{
+      res.render('pokedex', {string: newString, result});
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
 });
 
 router.get('/captured', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
@@ -94,6 +101,10 @@ router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   res.render('pokemon');
 });
 
+router.get('/addspottedpokemon', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
+  res.render('addspottedpokemon');
+});
+
 router.post('/addteam/:name', (req, res, next)=>{
   const name = req.params.name;
   const email = req.user.email;
@@ -102,21 +113,30 @@ router.post('/addteam/:name', (req, res, next)=>{
   const captured = req.user.captured;
   const capturedString = captured.join('-');
   if(team.length===6){
-    res.render('pokedex', {errorMessage: 'You already have 6 pokemon in your team. Remove some of them before you add new ones.', string: capturedString});
+    Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0})
+        .then((result)=>{
+          res.render('pokedex', {errorMessage: 'You already have 6 pokemon in your team. Remove some of them before you add new ones.', string: capturedString, result});
+        });
     return;
   }
   const newCaptured = [...captured, name];
   const newString = newCaptured.join('-');
   if(team.includes(name)){
     console.log('This pokemon is already in your team!');
-    res.render('/pokedex', {string: newString});
+    Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0})
+        .then((result)=>{
+          res.render('pokedex', {string: newString, result});
+        });
     return;
   }
   if(!captured.includes(name)){
     Trainer.updateOne({email}, {captured: newCaptured})
     .then(()=>{
       console.log(`You just captured ${name}!`);
-      res.render('pokedex', {string: newString});
+      Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0})
+        .then((result)=>{
+          res.render('pokedex', {string: newString, result});
+        });
     })
     .catch((err)=>{
       console.log(err);
@@ -140,14 +160,19 @@ router.post('/capture/:name', (req, res, next)=>{
   const newString = newCaptured.join('-');
   if(captured.includes(name)){
     console.log('This pokemon is already captured!');
-    res.render('pokedex', {string: newString});
+    Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0})
+        .then((result)=>{
+          res.render('pokedex', {string: newString, result});
+        });
     return;
   }  
   Trainer.updateOne({email}, {captured: newCaptured})
     .then(()=>{
-      console.log(newString);
       console.log(`You just captured ${name}!`);
-      res.render('pokedex', {string: newString});
+      Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0})
+        .then((result)=>{
+          res.render('pokedex', {string: newString, result});
+        });
     })
     .catch((err)=>{
       console.log(err);
@@ -169,7 +194,24 @@ router.post('/remove/:name', (req, res, next)=>{
     });
 });
 
+router.post('/addspottedpokemon', (req, res, next)=>{
+  const {number, name, weight, height, type, captured} = req.body;
+  const userCaptured = req.user.captured;
+  const newString = userCaptured.join('-');
+  const email = req.user.email;
+  Pokemon.create({number, name, weight, height, type, captured, trainer: email})
+    .then(()=>{
+      console.log(`Ỳou added ${name} to the Pokédex. Thank you!`);
+      Pokemon.find({trainer: email}, {name: 1, number: 1, number: 1, _id: 0})
+        .then((result)=>{
+          res.render('pokedex', {string: newString, result});
+        });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
 
+});
 
 module.exports = router;
   

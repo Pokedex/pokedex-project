@@ -8,7 +8,13 @@
 
 </div>
 
+{{#each result}}
+  <a href="pokemon/{{name}}"> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{number}}.png" alt="{{name}} image" style="width: 100px; opacity: .3"> </a>
+
+{{/each}}
+
 <p id="data-transport" style="display: none;">{{string}}</p>
+
 
 
 <script src="/javascripts/pokedexScript.js"></script>
