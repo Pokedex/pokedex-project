@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>Name: ${result.data.name}</p>
       <p>Weight: ${result.data.weight}</p>
   
-      <form action="/addteam/${result.data.name}" method="POST">
+      <form action="/addteam/${result.data.name}/${result.data.id}" method="POST">
         <button type="submit">Add to my team</button>
       </form>
   
-      <form action="/capture/${result.data.name}" method="POST">
+      <form action="/capture/${result.data.name}/${result.data.id}" method="POST">
         <button id="capture-button" type="submit">Capture</button>
       </form>
   

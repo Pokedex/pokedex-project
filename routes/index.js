@@ -62,10 +62,9 @@ router.get('/userpage', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 });
 
 router.get('/team', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
-
-  Trainer.findOne({email: req.user.email})
+  Pokemon.find({trainerTeam: req.user.email})
     .then((result)=>{
-      res.render('team', result);
+      res.render('team', {result});
     })
     .catch((err)=>{
       res.send(err);
@@ -88,10 +87,11 @@ router.get('/pokedex', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
 });
 
 router.get('/captured', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
-  Trainer.findOne({email: req.user.email})
-    .then((result)=>{
-      res.render('captured', result);
-    })
+  const email = req.user.email;
+    Pokemon.find({trainerCapture: email})
+      .then((result)=>{
+        res.render('captured', {result});
+      })
     .catch((err)=>{
       res.send(err);
     });
@@ -105,7 +105,8 @@ router.get('/addspottedpokemon', ensureLogin.ensureLoggedIn(), (req, res, next)=
   res.render('addspottedpokemon');
 });
 
-router.post('/addteam/:name', (req, res, next)=>{
+router.post('/addteam/:name/:number', (req, res, next)=>{
+  const number = req.params.number;
   const name = req.params.name;
   const email = req.user.email;
   const team = req.user.team;
@@ -133,17 +134,25 @@ router.post('/addteam/:name', (req, res, next)=>{
     Trainer.updateOne({email}, {captured: newCaptured})
     .then(()=>{
       console.log(`You just captured ${name}!`);
+      Pokemon.create({name, number, trainerCapture: email})
+        .then(()=>{
+          console.log(`${name} created in DB!`);
+        });
     })
     .catch((err)=>{
       console.log(err);
-    });    
+    });  
   }
   Trainer.updateOne({email}, {team: newTeam})
     .then(()=>{
-      console.log(`Added ${name} to you team!`);
-      Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
-        .then((result)=>{
-          res.render('pokedex', {string: newString, result});
+      console.log(`You just add ${name} to your team!`);
+      Pokemon.updateOne({name}, {trainerTeam: email})
+        .then(()=>{
+          console.log(`${name} updated in DB!`)
+          Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
+            .then((result)=>{
+              res.render('pokedex', {string: newString, result});
+            });
         });
     })
     .catch((err)=>{
@@ -151,8 +160,9 @@ router.post('/addteam/:name', (req, res, next)=>{
     });
 });
 
-router.post('/capture/:name', (req, res, next)=>{
+router.post('/capture/:name/:number', (req, res, next)=>{
   const name = req.params.name;
+  const number = Number(req.params.number);
   const email = req.user.email;
   const captured = req.user.captured;
   const newCaptured = [...captured, name];
@@ -168,9 +178,13 @@ router.post('/capture/:name', (req, res, next)=>{
   Trainer.updateOne({email}, {captured: newCaptured})
     .then(()=>{
       console.log(`You just captured ${name}!`);
-      Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
-        .then((result)=>{
-          res.render('pokedex', {string: newString, result});
+      Pokemon.create({name, number, trainerCapture: email})
+        .then(()=>{
+          console.log(`${name} created in DB!`)
+          Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
+            .then((result)=>{
+              res.render('pokedex', {string: newString, result});
+            });
         });
     })
     .catch((err)=>{
@@ -183,7 +197,7 @@ router.post('/remove/:name', (req, res, next)=>{
   const email = req.user.email;
   const team = req.user.team;
   team.splice(team.indexOf(name), 1);
-  Trainer.updateOne({email}, {team: team})
+  Trainer.updateOne({email}, {team, trainerTeam: ''})
     .then(()=>{
       console.log(`${name} just got out of your team!`);
       res.redirect('/team');
