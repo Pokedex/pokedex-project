@@ -1,45 +1,62 @@
-<h2>Are you out of Kanto? Please give us
-   information about new pokemons!</h2>
+<div >
+   <img class="log-hbs" src="./images/spot-img.png" alt="Log Image"> 
+</div>
+<div class="log-container">
+  <form action="/addspottedpokemon" method="POST">
+  <div class="textbox">
+    <input type="text" placeholder="Number in Pokédex" name="number" id="number">
+  </div>
+  
+  <br>
+  <div class="textbox">
+    <input type="text" placeholder="Name" name="name" id="name">
+  </div>
+  
+  <br>
 
-<form action="/addspottedpokemon" method="POST">
-  <label for="number">Number in Pokédex:</label>
-  <input type="text" name="number" id="number">
+  <div class="textbox">
+    <input type="text" placeholder="Weight" name="weight" id="weight">
+  </div>
+  
   <br>
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
+
+  <div class="textbox">
+    <input type="text" placeholder="Height" name="height" id="height"> 
+  </div>
+  
   <br>
-  <label for="weight">Weight:</label>
-  <input type="text" name="weight" id="weight">
-  <br>
-  <label for="height">Height:</label>
-  <input type="text" name="height" id="height">
-  <br>
-  <label for="type">Type:</label>
-  <select name="type" id="type">
-    <option value="normal">Normal</option> 
-    <option value="fire">Fire</option>
-    <option value="fighting">Fighting</option>
-    <option value="water">Water</option> 
-    <option value="flying">Flying</option>
-    <option value="grass">Grass</option>
-    <option value="poison">Poison</option> 
-    <option value="ground">Ground</option>
-    <option value="psychic">Psychic</option>
-    <option value="electric">Electric</option> 
-    <option value="rock">Rock</option>
-    <option value="ice">Ice</option>
-    <option value="bug">Bug</option> 
-    <option value="dragon">Dragon</option>
-    <option value="ghost">Ghost</option>
-    <option value="dark">Dark</option> 
-    <option value="steel">Steel</option>
-    <option value="fairy">Fairy</option>
-    <option value="???">???</option>
-    <option value="undefined">I don't know the type</option>
+
+  <div class="textbox">
+    <select class="select-css" aria-placeholder="Type" name="type" id="type">
+      <option disabled selected>Select Pokémon type...</option>
+      <option value="normal">Normal</option> 
+      <option value="fire">Fire</option>
+      <option value="fighting">Fighting</option>
+      <option value="water">Water</option> 
+      <option value="flying">Flying</option>
+      <option value="grass">Grass</option>
+      <option value="poison">Poison</option> 
+      <option value="ground">Ground</option>
+      <option value="psychic">Psychic</option>
+      <option value="electric">Electric</option> 
+      <option value="rock">Rock</option>
+      <option value="ice">Ice</option>
+      <option value="bug">Bug</option> 
+      <option value="dragon">Dragon</option>
+      <option value="ghost">Ghost</option>
+      <option value="dark">Dark</option> 
+      <option value="steel">Steel</option>
+      <option value="fairy">Fairy</option>
+      <option value="???">???</option>
+      <option value="undefined">I don't know the type</option>
   </select>
+  </div>
+
+  
   <br>
   {{!-- <input type="checkbox" name="captured" id="captured">
   <label for="captured">I captured the Pokémon:</label>
   <br> --}}
-  <button type="submit">Add Pokémon</button>
+  <button class="btn" type="submit">Add Pokémon</button>
 </form>
+</div>
