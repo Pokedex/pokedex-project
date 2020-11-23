@@ -197,10 +197,13 @@ router.post('/remove/:name', (req, res, next)=>{
   const email = req.user.email;
   const team = req.user.team;
   team.splice(team.indexOf(name), 1);
-  Trainer.updateOne({email}, {team, trainerTeam: ''})
+  Trainer.updateOne({email}, {team})
     .then(()=>{
-      console.log(`${name} just got out of your team!`);
-      res.redirect('/team');
+      Pokemon.findOneAndDelete({trainerTeam: email, name})
+        .then(()=>{
+          console.log(`${name} just got out of your team!`);
+          res.redirect('/team');
+        });
     })
     .catch((err)=>{
       console.log(err);
