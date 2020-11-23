@@ -146,7 +146,7 @@ router.post('/addteam/:name/:number', (req, res, next)=>{
   Trainer.updateOne({email}, {team: newTeam})
     .then(()=>{
       console.log(`You just add ${name} to your team!`);
-      Pokemon.updateOne({name}, {trainerTeam: email})
+      Pokemon.create({name, number, trainerTeam: email})
         .then(()=>{
           console.log(`${name} updated in DB!`)
           Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
