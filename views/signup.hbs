@@ -1,34 +1,42 @@
+<div >
+   <img class="log-hbs" src="./images/sign-img.png" alt="Log Image"> 
+</div>
 
+<div class="log-container">
 
-<div class="form-container">
+  <form action="/signup" method="POST">
 
-    <h2>Let's get catch 'em all</h2>
+  <div class="textbox">
+    <label for="name"></label>
+    <input type="text" placeholder="Name" name="name" id="name" autocomplete="off">
+  </div>
+    
+  </br>
 
-    <form action="/signup" method="POST">
+  <div class="textbox">
+    <label for="age"></label>
+    <input type="text" placeholder="Age" name="age" id="age" autocomplete="off">
+  </div>
 
-    <label for="name">Name: </label>
-    <input type="text" name="name" id="name">
+  </br>
 
-    </br>
+  <div class="textbox">
+    <label for="email"></label>
+    <input type="text" placeholder="Email" name="email" id="email" autocomplete="off">
+  </div>
 
-    <label for="age">Age: </label>
-    <input type="text" name="age" id="age">
+  </br>
 
-    </br>
+  <div class="textbox">
+    <label for="password"></label>
+    <input type="password" placeholder="Password" name="password" id="password" autocomplete="off">
+  </div>
+    
+  </br>
 
-    <label for="email">Email: </label>
-    <input type="text" name="email" id="email">
+  <button class="btn" type="submit">Create new trainer</button>
 
-    </br>
-
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password">
-
-    </br>
-
-    <button type="submit">Create new trainer</button>
-
-    <p>{{errorMessage}}</p>
+  <p>{{errorMessage}}</p>
 
   </form>
 </div>
