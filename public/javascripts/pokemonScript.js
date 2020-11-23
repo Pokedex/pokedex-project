@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <form action="/remove/${result.data.name}" method="POST">
         <button class="btn-pkmn" type="submit">Remove from team</button>
       </form>
+
+      <form action="/delete/${result.data.name}/${result.data.id}" method="POST">
+        <button class="btn-pkmn" type="submit">Delete Pokémon</button>
+      </form>
       `;
   })
   .catch((err)=>{

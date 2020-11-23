@@ -229,5 +229,25 @@ router.post('/addspottedpokemon', (req, res, next)=>{
 
 });
 
+router.post('/delete/:name/:number', (req, res)=>{
+  const name = req.params.name;
+  const number = req.params.number;
+  const email = req.user.email;
+  const captured = req.user.captured;
+  const newCaptured = [...captured, name];
+  const newString = newCaptured.join('-');
+  Pokemon.findOneAndDelete({trainer: email, number})
+    .then(()=>{
+      Pokemon.find({trainer: email}, {}, {sort: {number: 1}})
+      .then((result)=>{
+        res.render('pokedex', {string: newString, result});
+        console.log(`${name} was deleted.`);
+      });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+});
+
 module.exports = router;
   
