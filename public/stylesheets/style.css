@@ -9,6 +9,10 @@ a {
   color: #00B7FF; 
 }
 
+h2{
+  font-weight: 700;
+}
+
 .container {
   margin: 0 auto;
   text-align: center;
@@ -245,5 +249,13 @@ a {
 .text-pokedex{
   position: absolute;
   left: 47.5vw;
+}
+
+#captured-display {
+  margin: 3vh 3vw;
+}
+
+#team-display{
+  margin: 3vh 3vw;
 }
 /*# sourceMappingURL=style.css.map */

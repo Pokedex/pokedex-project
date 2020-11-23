@@ -1,9 +1,10 @@
-<h2>My captured pokemons:</h2>
+
 
 <div id="captured-display">
+  <h2>My captured pokemons:</h2>
   {{#each result}}
      <a style="display: inline-block;" href="/pokemon/{{name}}">
-      <img style="width: 100px;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{number}}.png" alt="{{name}}">
+      <img style="width: 200px;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{number}}.png" alt="{{name}}">
      </a>
   {{/each}}
 </div>
