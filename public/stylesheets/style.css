@@ -198,4 +198,52 @@ a {
 #pokemon-display p span{
   font-weight: 700;
 }
+
+#pokedex-display {
+  margin: 0 auto;
+}
+
+.user-box{
+  width: 60vw;
+  position: absolute;
+  left: 20vw;
+  top: 25vh;
+}
+
+.userimg {
+  height: 15vw;
+} 
+
+.usercaptured {
+  position: absolute;
+  left: 22.5vw;
+} 
+
+.userpokedex {
+  position: absolute;
+  left: 45vw;
+}
+
+.usertext {
+  color: black;
+  font-weight: bold;
+  font-size: 1.5vw;
+  text-decoration: none;
+  top: 32vh;
+}
+
+.text-team{
+  position: absolute;
+  left: 4.5vw;
+}
+
+.text-captured{
+  position: absolute;
+  left: 21.5vw;
+}
+
+.text-pokedex{
+  position: absolute;
+  left: 47.5vw;
+}
 /*# sourceMappingURL=style.css.map */
