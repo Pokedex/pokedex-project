@@ -6,7 +6,7 @@ body {
 }
 
 a {
-  color: #00B7FF; 
+  color: white; 
 }
 
 h2{
@@ -257,5 +257,44 @@ h2{
 
 #team-display{
   margin: 3vh 3vw;
+}
+
+.navbar{
+  background-color: black;
+  color: white;
+  padding: .4rem .5rem;
+  width: 100vw;
+  margin: 0;
+}
+
+.logo-cont{
+  margin-top: 2vh;
+}
+
+@media (max-width: 1470px) {
+  .container-left{
+    width: 15vw;
+  }
+  .container-right{
+    width: 15vw;
+    left: 80vw;
+  }
+}
+@media (max-width: 1000px) {
+  .container-left{
+    width: 10vw;
+  }
+  .container-right{
+    width: 10vw;
+    left: 90vw;
+  }
+}
+@media (max-width: 900px) {
+  .container-left{
+    display: none;
+  }
+  .container-right{
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
