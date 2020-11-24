@@ -201,45 +201,38 @@ h2{
 }
 
 .user-box{
-  width: 60vw;
   position: absolute;
+  width: 80vw;
   left: 20vw;
-  top: 25vh;
+  top: 15vw;
+}
+.user-box img {
+  width: 25%;
 }
 
-.userimg {
-  height: 15vw;
-} 
-
-.usercaptured {
-  position: absolute;
-  left: 22.5vw;
-} 
-
-.userpokedex {
-  position: absolute;
-  left: 45vw;
-}
 
 .usertext {
   color: black;
   font-weight: bold;
   font-size: 1.5vw;
   text-decoration: none;
-  top: 32vh;
+  top: 23vw;
 }
 
 .text-team{
+  font-size: 1.5vw;
   position: absolute;
   left: 4.5vw;
 }
 
 .text-captured{
+  font-size: 1.5vw;
   position: absolute;
   left: 21.5vw;
 }
 
 .text-pokedex{
+  font-size: 1.5vw;
   position: absolute;
   left: 47.5vw;
 }
@@ -312,12 +305,16 @@ h2{
 }
 
 .pokedex-pkmn{
-  width: 300px;
+  width: 100px;
 }
 
 .captured-pkmn{
   width: 200px;
   margin-top: 3vh;
+}
+
+.pkmn-info{
+  width: 300px;
 }
 
 @media (max-width: 1470px) {
@@ -328,6 +325,7 @@ h2{
     width: 15vw;
     left: 80vw;
   }
+
 }
 @media (max-width: 1000px) {
   .container-left{
@@ -361,7 +359,49 @@ h2{
     left: 35vw;
     width: 30vw;
   }
-
+  .user-box{
+    width: 80vw;
+    left: 10vw;
+    top: 25vw;
+  }
+  .text-team{
+    font-size: 5vw;
+    left: 30vw;
+    top: 35vw;
+  }
+  .text-captured{
+    text-align: center;
+    font-size: 5vw;
+    left: 10vw;
+    top: 100vw;
+  }
+  .text-pokedex{
+    font-size: 5vw;
+    left: 25vw;
+    top: 160vw;
+  }
+  .user-box img {
+    margin-left: 21.5vw;
+    width: 50%;
+    margin-bottom: 20vw;
+  }
+  #pokemon-display  .name-title{
+    font-size: 5vw;
+    font-weight: 700;
+  }
+  #pokemon-display p{
+    font-size: 3vw;
+  }
+  
+  #pokemon-display p span{
+    font-weight: 700;
+  }
+  .btn-pkmn{
+    width: 17.5vw;
+    padding: 5px;
+    font-size: 1.4vw;
+    margin: 12px 0;
+  }
 }
 
 @media (max-width: 750px) {
@@ -391,6 +431,23 @@ h2{
     top: 35vw;
     left: 5vw;
     width: 90vw;
+  }
+  #pokemon-display  .name-title{
+    font-size: 7vw;
+    font-weight: 700;
+  }
+  #pokemon-display p{
+    font-size: 5vw;
+  }
+  
+  #pokemon-display p span{
+    font-weight: 700;
+  }
+  .btn-pkmn{
+    width: 45vw;
+    padding: 5px;
+    font-size: 3.5vw;
+    margin: 12px 0;
   }
 }
 

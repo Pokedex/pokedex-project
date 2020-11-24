@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const abilityLetter = result.data.abilities[0].ability.name.slice(0,1).toUpperCase()
     const upperCasedAbility = abilityLetter + result.data.abilities[0].ability.name.slice(1)
       pokedisplay.innerHTML = `
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${result.data.id}.png" class="pokedex-pkmn">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${result.data.id}.png" class="pkmn-info">
       <p class="name-title">Nº${result.data.id}. ${name}</p>
       <p><span>Weight:</span> ${result.data.weight} lb</p>
       <p><span>Height:</span> ${result.data.height} in</p>

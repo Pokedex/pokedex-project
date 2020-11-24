@@ -13,10 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const pokeImg = document.createElement('img');
       const pokeAnchor = document.createElement('a');
       if(capturedArr.includes(pokemon.name)){
-        pokeImg.setAttribute('style', 'width: 100px; opacity: 1;');
+        pokeImg.setAttribute('style', 'opacity: 1;');
       } else {
-        pokeImg.setAttribute('style', 'width: 100px; opacity: .25;');
+        pokeImg.setAttribute('style', 'opacity: .25;');
       }
+      pokeImg.setAttribute('class', 'pokedex-pkmn')
       pokeAnchor.setAttribute('href', `/pokemon/${pokemon.name}`);
       pokeImg.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`);
       pokeImg.setAttribute('alt', `${pokemon.name} image`);
