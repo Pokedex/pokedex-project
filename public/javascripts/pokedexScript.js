@@ -2,10 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const pokedexdisplay = document.getElementById('pokedex-display');
+  const pikachuload = document.getElementById('pikachu-load');
+  const loadbox = document.getElementById('load-box');
   const capturedArr = document.getElementById('data-transport').innerText.split('-');
   console.log(capturedArr);
 
-  
+  setTimeout(()=>{
+    pikachuload.style.display = 'none';
+    loadbox.style.display = 'block';
+  }, 6500);
+
   axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
   .then((result)=>{
     result.data.results.forEach((pokemon, index)=>{
@@ -18,13 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
         pokeImg.setAttribute('style', 'opacity: .25;');
       }
       pokeImg.setAttribute('class', 'pokedex-pkmn')
-      pokeAnchor.setAttribute('href', `/pokemon/${pokemon.name}`);
+      pokeAnchor.setAttribute('href', `/pokemon/${pokemon.number}`);
       pokeImg.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`);
       pokeImg.setAttribute('alt', `${pokemon.name} image`);
       // pokeImg.setAttribute('id', `${pokemon.name}-pokedex`)
       pokeAnchor.append(pokeImg);
       pokedexdisplay.append(pokeAnchor);
+
     });
+    
   })
   .catch((err)=>{
     console.log(err);

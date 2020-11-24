@@ -3,15 +3,21 @@
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
 {{/if}}
+<div id="load-box" style="display: none;">
+  <div id="pokedex-display">
 
-<div id="pokedex-display">
+  </div>
 
+  {{#each result}}
+    <a href="pokemon/{{number}}"> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{number}}.png" alt="{{name}} image" style="width: 100px; opacity: .3"> </a>
+
+  {{/each}}
 </div>
 
-{{#each result}}
-  <a href="pokemon/{{name}}"> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{number}}.png" alt="{{name}} image" style="width: 100px; opacity: .3"> </a>
-
-{{/each}}
+<div id="pikachu-load">
+  <img src="/images/charmander-load.gif" alt="pikachu running gif">
+  <p>Loading...</p>
+</div>
 
 <p id="data-transport" style="display: none;">{{string}}</p>
 

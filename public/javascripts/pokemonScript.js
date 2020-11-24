@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const pokemonPath = (window.location.pathname).toLowerCase();
 
-  const pokemonName = (window.location.pathname).split('/')[2];
-
   const pokedisplay = document.getElementById('pokemon-display');
  
 

@@ -97,7 +97,7 @@ router.get('/captured', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
     });
 });
 
-router.get('/pokemon/:name', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
+router.get('/pokemon/:number', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   res.render('pokemon');
 });
 
@@ -215,6 +215,14 @@ router.post('/addspottedpokemon', (req, res, next)=>{
   const userCaptured = req.user.captured;
   const newString = userCaptured.join('-');
   const email = req.user.email;
+  
+  if(name==='' || number===''){
+    Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
+        .then((result)=>{
+          res.render('addspottedpokemon', {errorMessage: 'Number in Pokédex and Name are required. Fill them please.'});
+        });
+        return;
+  }
   Pokemon.create({number, name, weight, height, type, captured, trainer: email})
     .then(()=>{
       console.log(`Ỳou added ${name} to the Pokédex. Thank you!`);

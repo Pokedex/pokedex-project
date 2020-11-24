@@ -7,9 +7,6 @@ const pokemonSchema = new Schema({
   weight: {type: Number},
   height: {type: Number},
   type: {type: String},
-  moves: {type: [String]},
-  spotted: {type: Boolean},
-  captured: {type: Boolean, default: false},
   trainer: {type: String},
   trainerCapture: {type: String},
   trainerTeam: {type: String}

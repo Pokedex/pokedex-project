@@ -14,6 +14,11 @@ h2{
   font-weight: 700;
 }
 
+.error-message{
+  color: #3B4CCA;
+  max-width: 16vw;
+}
+
 .custom-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -317,6 +322,24 @@ h2{
   width: 300px;
 }
 
+#pikachu-load{
+  width: 18vw;
+  position: absolute;
+  left: 41vw;
+  top: 20vw;
+}
+
+#pikachu-load img{
+  width: 100%;
+}
+
+#pikachu-load p{
+  font-size: 2vw;
+  position: absolute;
+  top: 12vw;
+  left: 5vw;
+}
+
 @media (max-width: 1470px) {
   .container-left{
     width: 15vw;
@@ -402,6 +425,20 @@ h2{
     font-size: 1.4vw;
     margin: 12px 0;
   }
+
+  #pikachu-load{
+    width: 30vw;
+    position: absolute;
+    left: 35vw;
+    top: 35vw;
+  }
+  #pikachu-load p{
+    font-size: 3vw;
+    position: absolute;
+    top: 20vw;
+    left: 8.5vw;
+  }
+
 }
 
 @media (max-width: 750px) {
@@ -449,6 +486,20 @@ h2{
     font-size: 3.5vw;
     margin: 12px 0;
   }
+
+
+#pikachu-load{
+  width: 50vw;
+  position: absolute;
+  left: 25vw;
+  top: 70vw;
+}
+#pikachu-load p{
+  font-size: 6vw;
+  position: absolute;
+  top: 35vw;
+  left: 11vw;
+}
 }
 
 @media (max-width: 430px) {

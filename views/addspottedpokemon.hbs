@@ -2,14 +2,15 @@
    <img class="log-hbs" src="./images/spot-img.png" alt="Log Image"> 
 </div>
 <div class="log-container">
+  
   <form action="/addspottedpokemon" method="POST">
   <div class="textbox">
-    <input type="text" placeholder="Number in Pokédex" name="number" id="number">
+    <input type="text" placeholder="Number in Pokédex*" name="number" id="number">
   </div>
   
   <br>
   <div class="textbox">
-    <input type="text" placeholder="Name" name="name" id="name">
+    <input type="text" placeholder="Name*" name="name" id="name">
   </div>
   
   <br>
@@ -58,5 +59,12 @@
   <label for="captured">I captured the Pokémon:</label>
   <br> --}}
   <button class="btn" type="submit">Add Pokémon</button>
+  {{#if errorMessage}}
+    <p class="error-message">{{errorMessage}}</p>
+  {{else}}
+    <p>*Required fields.</p>
+  {{/if}}
+  
+  
 </form>
 </div>
