@@ -16,7 +16,7 @@ h2{
 
 .error-message{
   color: #3B4CCA;
-  max-width: 16vw;
+  width: 100%;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -357,6 +357,7 @@ h2{
   .container-right{
     display: none;
   }
+
   .logo-cont{
     top: 10vw;
     left: 30vw;
