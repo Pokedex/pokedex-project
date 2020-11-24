@@ -126,7 +126,7 @@ router.post('/addteam/:name/:number', (req, res, next)=>{
     console.log('This pokemon is already in your team!');
     Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
     .then((result)=>{
-          res.render('pokedex', {string: newString, result});
+          res.render('pokedex', {errorMessage: `This Pokémon is already in your team, trainer!`, string: capturedString, result});
         });
     return;
   }
@@ -151,7 +151,7 @@ router.post('/addteam/:name/:number', (req, res, next)=>{
           console.log(`${name} updated in DB!`)
           Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
             .then((result)=>{
-              res.render('pokedex', {string: newString, result});
+              res.redirect('/team');
             });
         });
     })
@@ -171,7 +171,7 @@ router.post('/capture/:name/:number', (req, res, next)=>{
     console.log('This pokemon is already captured!');
     Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
     .then((result)=>{
-          res.render('pokedex', {string: newString, result});
+          res.render('pokedex', {string: newString, result, errorMessage: 'This Pokémon is already captured!'});
         });
     return;
   }  
@@ -183,7 +183,7 @@ router.post('/capture/:name/:number', (req, res, next)=>{
           console.log(`${name} created in DB!`)
           Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
             .then((result)=>{
-              res.render('pokedex', {string: newString, result});
+              res.redirect('/captured');
             });
         });
     })

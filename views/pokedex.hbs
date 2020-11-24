@@ -1,9 +1,9 @@
 <h2>Pokedex:</h2>
 
-{{#if errorMessage}}
-  <p>{{errorMessage}}</p>
-{{/if}}
 <div id="load-box" style="display: none;">
+  {{#if errorMessage}}
+    <p class="error-message">{{errorMessage}}</p>
+  {{/if}}
   <div id="pokedex-display">
 
   </div>
