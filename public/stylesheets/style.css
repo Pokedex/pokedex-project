@@ -14,6 +14,13 @@ h2{
   font-weight: 700;
 }
 
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+  border-color: white;
+} 
+
 .container {
   margin: 0 auto;
   text-align: center;
@@ -117,22 +124,6 @@ h2{
   width: 20vw;
 }
 
-.log-container{
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin: 15vh auto;
-  width: 20vw;
-}
-
-.log-hbs {
-  display: flex;
-  width: 45vw;
-  position: relative;
-  left: 550px;
-  top: 100px;
-}
-
 .textbox {
   width: 100%;
   overflow: hidden;
@@ -173,12 +164,12 @@ h2{
   background: none;
   border: none;
   color: #887164;
-  font-size: 1vw;
+  font-size: 1.2rem;
 }
- .select-css:focus{
-   background-color: #6D6868;
-   color: white;
- }
+.select-css:focus{
+  background-color: #6D6868;
+  color: white;
+}
 
 .btn-pkmn{
   width: 10vw;
@@ -206,6 +197,7 @@ h2{
 
 #pokedex-display {
   margin: 0 auto;
+  width: 100vw;
 }
 
 .user-box{
@@ -298,6 +290,36 @@ h2{
   left: 40vw;
 }
 
+.log-container{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  top: 15vw;
+  left: 40vw;
+  width: 20vw;
+}
+
+.sign-title{
+  position: absolute;
+  left: 30vw;
+  top: 7vw;
+  width: 40vw;
+}
+
+.sign-title img {
+  width: 100%;
+}
+
+.pokedex-pkmn{
+  width: 300px;
+}
+
+.captured-pkmn{
+  width: 200px;
+  margin-top: 3vh;
+}
+
 @media (max-width: 1470px) {
   .container-left{
     width: 15vw;
@@ -329,6 +351,17 @@ h2{
     left: 30vw;
     width: 40vw;
   }
+  .sign-title{
+    top: 12vw;
+    left: 15vw;
+    width: 70vw;
+  }
+  .log-container{
+    top: 27vw;
+    left: 35vw;
+    width: 30vw;
+  }
+
 }
 
 @media (max-width: 750px) {
@@ -348,7 +381,20 @@ h2{
     width: 60vw;
   }
 }
-@media (max-width: 400px) {
+@media(max-width: 600px){
+  .sign-title{
+    top: 20vw;
+    left: 5vw;
+    width: 90vw;
+  }
+  .log-container{
+    top: 35vw;
+    left: 5vw;
+    width: 90vw;
+  }
+}
+
+@media (max-width: 430px) {
   .logo-cont{
     top: 20vw;
   }
@@ -358,5 +404,9 @@ h2{
   .buttons-index{
     top: 120vw;
   }
+  .captured-pkmn{
+    width: 140px;
+  }
 }
+
 /*# sourceMappingURL=style.css.map */
