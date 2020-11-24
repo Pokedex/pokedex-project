@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pokeImg.setAttribute('style', 'opacity: .25;');
       }
       pokeImg.setAttribute('class', 'pokedex-pkmn')
-      pokeAnchor.setAttribute('href', `/pokemon/${pokemon.number}`);
+      pokeAnchor.setAttribute('href', `/pokemon/${number}`);
       pokeImg.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`);
       pokeImg.setAttribute('alt', `${pokemon.name} image`);
       // pokeImg.setAttribute('id', `${pokemon.name}-pokedex`)
