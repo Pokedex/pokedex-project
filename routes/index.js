@@ -216,10 +216,10 @@ router.post('/addspottedpokemon', (req, res, next)=>{
   const newString = userCaptured.join('-');
   const email = req.user.email;
   
-  if(name==='' || number===''){
+  if(number===''){
     Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
         .then((result)=>{
-          res.render('addspottedpokemon', {errorMessage: 'Number in Pokédex and Name are required. Fill them please.'});
+          res.render('addspottedpokemon', {errorMessage: 'Number in Pokédex is required. Fill it please.'});
         });
         return;
   }

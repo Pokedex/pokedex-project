@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const pikachuload = document.getElementById('pikachu-load');
   const loadbox = document.getElementById('load-box');
   const capturedArr = document.getElementById('data-transport').innerText.split('-');
-  console.log(capturedArr);
 
   setTimeout(()=>{
     pikachuload.style.display = 'none';
