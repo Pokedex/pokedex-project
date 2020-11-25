@@ -9,4 +9,4 @@ Did you add a wrong Pokémon? Don't worry, go to the Pokémon page and delete it
 Remember that you can only have 6 Pokémons on your team, so choose them wisely and if you want to change your team, you have to first remove one and then add the new Pokémon.</br>
 ## **Setup**
 Enjoy visiting our first web app and remember [You Gotta Catch 'Em All!](https://pokedexproject1.herokuapp.com/)</br>
-![](https://i.pinimg.com/originals/23/2d/15/232d153e5aae4517c9a6510622bd0368.gif)
+![](./public/images/pikachu-readme.gif)
