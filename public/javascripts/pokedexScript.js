@@ -7,17 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const capturedArr = document.getElementById('data-transport').innerText.split('-');
   let counter = 0;
 
-    setInterval(()=>{
-      [...pokedexdisplay.children].forEach((item)=>{
-           if(item.childNodes[0].complete){
-            counter++;
-          }
-          if(counter===151){
-            pikachuload.style.display = 'none';
-            loadbox.style.display = 'block';
-          }  
-        });
-    },100);
+  setInterval(()=>{
+    counter = 0;
+    [...pokedexdisplay.children].forEach((item)=>{
+          if(item.childNodes[0].complete){
+          counter++;
+        }
+        if(counter===151){
+          pikachuload.style.display = 'none';
+          loadbox.style.display = 'block';
+        }  
+      });
+  },100);
       
   axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
   .then((result)=>{
