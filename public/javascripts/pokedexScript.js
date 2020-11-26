@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const capturedArr = document.getElementById('data-transport').innerText.split('-');
   let counter = 0;
 
+  const loadGif = document.createElement('img');
+  loadGif.setAttribute('alt', 'Transition pokemon loading page image');
+  loadGif.setAttribute('src', `loadGifArr[]`)
+
   setInterval(()=>{
     counter = 0;
     [...pokedexdisplay.children].forEach((item)=>{
