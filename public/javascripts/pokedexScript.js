@@ -7,9 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const capturedArr = document.getElementById('data-transport').innerText.split('-');
   let counter = 0;
 
+  const loadGifArr = ['../images/charmander-load.gif', '../images/gengar-gif.gif', '../images/mew-load.gif', '../images/undertale-gif.gif'];
+  let randomIndex = (Math.floor(Math.random()*loadGifArr.length));
   const loadGif = document.createElement('img');
   loadGif.setAttribute('alt', 'Transition pokemon loading page image');
-  loadGif.setAttribute('src', `loadGifArr[]`)
+  loadGif.setAttribute('src', loadGifArr[randomIndex]);
+  pikachuload.append(loadGif);
 
   setInterval(()=>{
     counter = 0;
