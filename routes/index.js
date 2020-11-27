@@ -20,7 +20,7 @@ router.post('/signup', (req, res, next)=>{
   const {name, age, email, password} = req.body;
 
   if(name === '' || age === '' || email === '' || password === ''){
-    res.render('signup', {errorMessage: 'You have to fill all the fields.'})
+    res.render('signup', {errorMessage: 'You have to fill all the fields.'});
     return;
   }
 
@@ -31,9 +31,9 @@ router.post('/signup', (req, res, next)=>{
       .then((hashedPass)=>{
         Trainer.create({name, age, email, password: hashedPass})
         .then(()=>res.redirect('/login'));
-      })
+      });
     } else {
-      res.render('signup', {errorMessage: 'This trainer already exists, please try again.'})
+      res.render('signup', {errorMessage: 'This trainer already exists, please try again.'});
     }
   })
   .catch((err)=>res.send(err));
@@ -79,6 +79,13 @@ router.get('/pokedex', ensureLogin.ensureLoggedIn(), (req,res,next)=>{
   const newString = newCaptured.join('-');
   Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
     .then((result)=>{
+      
+      result.forEach((pokemon)=>{
+        if(captured.includes(pokemon.name)){
+          result.captured = true;
+        }
+      });
+
       res.render('pokedex', {string: newString, result});
     })
     .catch((err)=>{
@@ -148,7 +155,7 @@ router.post('/addteam/:name/:number', (req, res, next)=>{
       console.log(`You just add ${name} to your team!`);
       Pokemon.create({name, number, trainerTeam: email})
         .then(()=>{
-          console.log(`${name} updated in DB!`)
+          console.log(`${name} updated in DB!`);
           Pokemon.find({trainer: email}, {name: 1, number: 1, _id: 0}, {sort: {number: 1}})
             .then((result)=>{
               res.redirect('/team');

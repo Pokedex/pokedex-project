@@ -4,8 +4,6 @@ const Schema   = mongoose.Schema;
 const pokemonSchema = new Schema({
   number: {type: Number},
   name: {type: String},
-  weight: {type: Number},
-  height: {type: Number},
   type: {type: String},
   trainer: {type: String},
   trainerCapture: {type: String},

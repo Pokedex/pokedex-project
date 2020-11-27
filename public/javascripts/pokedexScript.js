@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   loadGif.setAttribute('src', loadGifArr[randomIndex]);
   pikachuload.append(loadGif);
 
+  
+
   setInterval(()=>{
     counter = 0;
     [...pokedexdisplay.children].forEach((item)=>{
@@ -34,13 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const pokeImg = document.createElement('img');
       const pokeAnchor = document.createElement('a');
 
-
       if(capturedArr.includes(pokemon.name)){
         pokeImg.setAttribute('style', 'opacity: 1;');
       } else {
         pokeImg.setAttribute('style', 'opacity: .25;');
       }
-      pokeImg.setAttribute('class', 'pokedex-pkmn')
+      pokeImg.setAttribute('class', 'pokedex-pkmn');
       pokeAnchor.setAttribute('href', `/pokemon/${number}`);
       pokeImg.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`);
       pokeImg.setAttribute('alt', `${pokemon.name} image`);
