@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const capturedArr = document.getElementById('data-transport').innerText.split('-');
   let counter = 0;
 
-  const loadGifArr = ['../images/charmander-load.gif', '../images/gengar-gif.gif', '../images/mew-load.gif', '../images/undertale-gif.gif'];
+  const loadGifArr = ['../images/charmander-load.gif', '../images/gengar-gif.gif', '../images/mew-load.gif', '../images/undertale-gif.gif', '../images/ash-pikachu.gif'];
   let randomIndex = (Math.floor(Math.random()*loadGifArr.length));
   const loadGif = document.createElement('img');
   loadGif.setAttribute('alt', 'Transition pokemon loading page image');
@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if(item.childNodes[0].complete){
           counter++;
         }
-        // if(counter===151){
-        //   pikachuload.style.display = 'none';
-        //   loadbox.style.display = 'block';
-        // }  
+        if(counter===151){
+          pikachuload.style.display = 'none';
+          loadbox.style.display = 'block';
+        }  
       });
   },100);
       
