@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if(item.childNodes[0].complete){
           counter++;
         }
-        if(counter===151){
-          pikachuload.style.display = 'none';
-          loadbox.style.display = 'block';
-        }  
+        // if(counter===151){
+        //   pikachuload.style.display = 'none';
+        //   loadbox.style.display = 'block';
+        // }  
       });
   },100);
       
