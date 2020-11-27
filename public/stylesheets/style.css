@@ -336,8 +336,8 @@ h2{
 #pikachu-load p{
   font-size: 2vw;
   position: absolute;
-  top: 12vw;
-  left: 5vw;
+  top: 18vw;
+  left: 4vw;
 }
 
 @media (max-width: 1470px) {
@@ -427,7 +427,7 @@ h2{
     margin: 12px 0;
   }
 
-  #pikachu-load{
+  #pikachu-load{393
     width: 30vw;
     position: absolute;
     left: 35vw;
@@ -436,8 +436,8 @@ h2{
   #pikachu-load p{
     font-size: 3vw;
     position: absolute;
-    top: 20vw;
-    left: 8.5vw;
+    top: 30vw;
+    left: 7.5vw;
   }
 
 }
@@ -498,7 +498,7 @@ h2{
 #pikachu-load p{
   font-size: 6vw;
   position: absolute;
-  top: 35vw;
+  top: 50vw;
   left: 11vw;
 }
 }
