@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
           counter++;
         }
         if(counter===151){
-          pikachuload.style.display = 'none';
-          loadbox.style.display = 'block';
+          // pikachuload.style.display = 'none';
+          // loadbox.style.display = 'block';
         }  
       });
   },100);
